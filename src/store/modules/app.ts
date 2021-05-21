@@ -51,6 +51,7 @@ const actions: ActionTree<AppState, RootState> = {
 }
 
 export const appStore: Module<AppState, RootState> = {
+  namespaced: true,
   state,
   mutations,
   actions,
