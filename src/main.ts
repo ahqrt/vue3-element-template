@@ -7,5 +7,6 @@ import 'element-plus/lib/theme-chalk/index.css'
 import ElementPlus from 'element-plus'
 import router from './router'
 import './permission'
+import { store } from './store'
 
-createApp(App).use(ElementPlus).use(router).mount('#app')
+createApp(App).use(ElementPlus).use(store).use(router).mount('#app')

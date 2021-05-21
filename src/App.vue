@@ -5,7 +5,12 @@
 </template>
 
 <script lang="ts">
+import { useProvider } from './context'
+
 export default {
   name: 'App',
+  setup() {
+    useProvider()
+  },
 }
 </script>

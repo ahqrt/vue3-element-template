@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "element-plus": "^1.0.2-beta.44",
+    "js-cookie": "^2.2.1",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "sass": "^1.33.0",
@@ -17,6 +18,8 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.1.2",
+    "@types/js-cookie": "^2.2.6",
+    "@types/node": "^15.3.1",
     "@types/nprogress": "^0.2.0",
     "@vitejs/plugin-vue": "^1.2.2",
     "@vue/compiler-sfc": "^3.0.5",
