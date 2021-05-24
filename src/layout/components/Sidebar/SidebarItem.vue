@@ -36,7 +36,7 @@ import Item from './Item'
 import AppLink from './Link.vue'
 // import FixiOSBug from './FixiOSBug'
 import { defineComponent, ref } from 'vue'
-import path from 'path'
+import path from 'path-browserify'
 
 export default defineComponent({
   name: 'SidebarItem',
