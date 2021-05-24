@@ -14,6 +14,27 @@ const routes: RouteRecordRaw[] = [
       },
     ],
   },
+  {
+    path: '/example',
+    component: Layout,
+    redirect: '/example/table',
+    name: 'Example',
+    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'table',
+        name: 'Table',
+        component: () => import('@/pages/home/index.vue'),
+        meta: { title: 'Table', icon: 'table' },
+      },
+      {
+        path: 'tree',
+        name: 'Tree',
+        component: () => import('@/pages/home/index.vue'),
+        meta: { title: 'Tree', icon: 'tree' },
+      },
+    ],
+  },
 ]
 
 const router = createRouter({
