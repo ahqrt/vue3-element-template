@@ -33,8 +33,9 @@
 import { mapGetters, useStore } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import Hamburger from '@/components/Hamburger/index.vue'
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { RootState } from '@/store'
 
 export default defineComponent({
   components: {
@@ -45,7 +46,7 @@ export default defineComponent({
     ...mapGetters(['sidebar', 'avatar']),
   },
   setup() {
-    const store = useStore()
+    const store = useStore<RootState>()
     console.log('store', store)
     const router = useRouter()
     const route = useRoute()

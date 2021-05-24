@@ -44,6 +44,7 @@ export default defineComponent({
     const showLogo = computed(() => store.state.settingStore.sidebarLogo)
     const variablesS = computed(() => variables)
     const isCollapse = computed(() => !store.state.appStore.sidebar.opened)
+
     return {
       routes,
       activeMenu,
