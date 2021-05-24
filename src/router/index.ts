@@ -24,7 +24,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'table',
         name: 'Table',
-        component: () => import('@/pages/home/index.vue'),
+        component: () => import('@/pages/table/index.vue'),
         meta: { title: 'Table', icon: 'table' },
       },
       {

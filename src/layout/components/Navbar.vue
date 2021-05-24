@@ -33,7 +33,7 @@
 import { mapGetters, useStore } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import Hamburger from '@/components/Hamburger/index.vue'
-import { computed, defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { RootState } from '@/store'
 

@@ -1,6 +1,6 @@
 <template>
   <el-breadcrumb class="app-breadcrumb" separator="/">
-    <transition-group name="breadcrumb">
+    <transition-group name="breadcrumb" mode="out-in">
       <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
         <span v-if="item.redirect === 'noRedirect' || index == levelList.length - 1" class="no-redirect">{{
           item.meta.title
@@ -18,6 +18,7 @@ import { watch } from 'vue'
 import { RouteLocationMatched, RouteLocationRaw, RouteRecordRaw, useRoute, useRouter } from 'vue-router'
 
 export default defineComponent({
+  name: 'Breadcrumb',
   setup() {
     const route = useRoute()
     const router = useRouter()
@@ -25,6 +26,7 @@ export default defineComponent({
     const getBreadcrumb = () => {
       // only show routes with meta.title
       let matched = route.matched.filter((item) => item.meta && item.meta.title)
+      console.log(matched)
       const first = matched[0]
 
       if (isDashboard(first)) {
@@ -56,7 +58,7 @@ export default defineComponent({
     }
 
     watch(
-      () => route,
+      () => route.path,
       () => {
         getBreadcrumb()
       }
