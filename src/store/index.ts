@@ -2,6 +2,7 @@ import { AppState, appStore } from './modules/app'
 import { createStore } from 'vuex'
 import { SettingState, settingStore } from './modules/settings'
 import { UserState, userStore } from './modules/user'
+import getters from './getters'
 
 export type RootState = {
   appStore: AppState
@@ -15,4 +16,5 @@ export const store = createStore({
     settingStore,
     userStore,
   },
+  getters,
 })

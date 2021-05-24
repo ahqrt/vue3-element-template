@@ -30,11 +30,13 @@
 </template>
 
 <script lang="ts">
-import { mapGetters } from 'vuex'
-import Breadcrumb from '@/components/Breadcrumb'
-import Hamburger from '@/components/Hamburger'
+import { mapGetters, useStore } from 'vuex'
+import Breadcrumb from '@/components/Breadcrumb/index.vue'
+import Hamburger from '@/components/Hamburger/index.vue'
+import { defineComponent } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
-export default {
+export default defineComponent({
   components: {
     Breadcrumb,
     Hamburger,
@@ -42,16 +44,24 @@ export default {
   computed: {
     ...mapGetters(['sidebar', 'avatar']),
   },
-  methods: {
-    toggleSideBar() {
-      this.$store.dispatch('app/toggleSideBar')
-    },
-    async logout() {
-      await this.$store.dispatch('user/logout')
-      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
-    },
+  setup() {
+    const store = useStore()
+    console.log('store', store)
+    const router = useRouter()
+    const route = useRoute()
+    const toggleSideBar = () => {
+      store.dispatch('appStore/toggleSideBar')
+    }
+    const logout = async () => {
+      await store.dispatch('userStore/logout')
+      router.push(`/login?redirect=${route.fullPath}`)
+    }
+    return {
+      toggleSideBar,
+      logout,
+    }
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>

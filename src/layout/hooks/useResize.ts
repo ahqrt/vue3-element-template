@@ -8,6 +8,7 @@ const WIDTH = 992
 
 const useResize = () => {
   const route = useRoute()
+  console.log('route', route)
 
   const $_isMobile = () => {
     const rect = body.getBoundingClientRect()

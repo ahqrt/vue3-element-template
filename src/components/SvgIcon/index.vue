@@ -1,48 +1,52 @@
 <template>
-  <div v-if="isExternal" :style="styleExternalIcon" class="svg-external-icon svg-icon" v-on="$listeners" />
-  <svg v-else :class="svgClass" aria-hidden="true" v-on="$listeners">
+  <div v-if="isExternalS" :style="styleExternalIcon" class="svg-external-icon svg-icon" v-on="$attrs" />
+  <svg v-else :class="svgClass" aria-hidden="true" v-on="$attrs">
     <use :xlink:href="iconName" />
   </svg>
 </template>
 
-<script>
-// doc: https://panjiachen.github.io/vue-element-admin-site/feature/component/svg-icon.html#usage
+<script lang="ts">
 import { isExternal } from '@/utils/validate'
+import { computed, defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'SvgIcon',
   props: {
     iconClass: {
       type: String,
-      required: true
+      required: true,
     },
     className: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
-  computed: {
-    isExternal() {
-      return isExternal(this.iconClass)
-    },
-    iconName() {
-      return `#icon-${this.iconClass}`
-    },
-    svgClass() {
-      if (this.className) {
-        return 'svg-icon ' + this.className
+
+  setup(props) {
+    const isExternalS = computed(() => isExternal(props.iconClass))
+    const iconName = computed(() => `#icon-${props.iconClass}`)
+    const svgClass = computed(() => {
+      if (props.className) {
+        return 'svg-icon ' + props.className
       } else {
         return 'svg-icon'
       }
-    },
-    styleExternalIcon() {
+    })
+    const styleExternalIcon = computed(() => {
       return {
-        mask: `url(${this.iconClass}) no-repeat 50% 50%`,
-        '-webkit-mask': `url(${this.iconClass}) no-repeat 50% 50%`
+        mask: `url(${props.iconClass}) no-repeat 50% 50%`,
+        '-webkit-mask': `url(${props.iconClass}) no-repeat 50% 50%`,
       }
+    })
+
+    return {
+      isExternalS,
+      iconName,
+      svgClass,
+      styleExternalIcon,
     }
-  }
-}
+  },
+})
 </script>
 
 <style scoped>
@@ -56,7 +60,7 @@ export default {
 
 .svg-external-icon {
   background-color: currentColor;
-  mask-size: cover!important;
+  mask-size: cover !important;
   display: inline-block;
 }
 </style>

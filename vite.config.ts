@@ -9,6 +9,10 @@ export default defineConfig({
       '@': resolve(__dirname, 'src'),
     },
   },
+  esbuild: {
+    jsxFactory: 'h',
+    jsxFragment: 'Fragment',
+  },
   server: {
     proxy: {
       '/api': {
