@@ -12,5 +12,4 @@ import SvgIcon from '@/components/SvgIcon/index.vue' // svg component
 
 const app = createApp(App)
 app.component('svg-icon', SvgIcon)
-
 app.use(ElementPlus).use(store).use(router).mount('#app')
