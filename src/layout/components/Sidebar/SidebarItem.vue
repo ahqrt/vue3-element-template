@@ -32,7 +32,7 @@
 
 <script lang="ts">
 import { isExternal } from '@/utils/validate'
-import Item from './Item'
+import Item from './Item.vue'
 import AppLink from './Link.vue'
 // import FixiOSBug from './FixiOSBug'
 import { defineComponent, ref } from 'vue'
@@ -58,8 +58,6 @@ export default defineComponent({
     },
   },
   setup(props) {
-    console.log('item', props.item)
-
     let onlyOneChild = ref<any>()
     const hasOneShowingChild = (children: any[] = [], parent: any) => {
       const showingChildren = children.filter((item) => {

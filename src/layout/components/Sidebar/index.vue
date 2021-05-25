@@ -23,7 +23,7 @@ import { useStore } from 'vuex'
 import Logo from './Logo.vue'
 import SidebarItem from './SidebarItem.vue'
 import variables from '@/styles/variables.module.scss'
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { RootState } from '@/store'
 
@@ -44,7 +44,7 @@ export default defineComponent({
     const showLogo = computed(() => store.state.settingStore.sidebarLogo)
     const variablesS = computed(() => variables)
     const isCollapse = computed(() => !store.state.appStore.sidebar.opened)
-
+    watchEffect(() => console.log('isCollapse', isCollapse.value))
     return {
       routes,
       activeMenu,

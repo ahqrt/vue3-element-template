@@ -8,10 +8,9 @@ import ElementPlus from 'element-plus'
 import router from './router'
 import './permission'
 import { store } from './store'
-import { useProvider } from './context'
 import SvgIcon from '@/components/SvgIcon/index.vue' // svg component
 
 const app = createApp(App)
 app.component('svg-icon', SvgIcon)
 
-app.use(useProvider()).use(ElementPlus).use(store).use(router).mount('#app')
+app.use(ElementPlus).use(store).use(router).mount('#app')

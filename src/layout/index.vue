@@ -21,8 +21,8 @@ export default defineComponent({
   setup() {
     useResize()
     const store = useStore<RootState>()
-    const siderbar = computed(() => store.state.appStore.sidebar)
-    const device = computed(() => store.state)
+    const sidebar = computed(() => store.state.appStore.sidebar)
+    const device = computed(() => store.state.appStore.device)
     const fixedHeader = computed(() => store.state.settingStore.fixedHeader)
     const classObj = computed(() => {
       return {
@@ -36,7 +36,7 @@ export default defineComponent({
       store.dispatch('appStore/closeSideBar', { withoutAnimation: false })
     }
     return {
-      siderbar,
+      sidebar,
       device,
       fixedHeader,
       classObj,
