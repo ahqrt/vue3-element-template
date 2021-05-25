@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!item.hidden">
+  <template v-if="!item.hidden">
     <template
       v-if="
         hasOneShowingChild(item.children, item) &&
@@ -7,11 +7,14 @@
         !item.alwaysShow
       "
     >
-      <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
-        <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{ 'submenu-title-noDropdown': !isNest }">
-          <item :icon="onlyOneChild.meta.icon || (item.meta && item.meta.icon)" :title="onlyOneChild.meta.title" />
-        </el-menu-item>
-      </app-link>
+      <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{ 'submenu-title-noDropdown': !isNest }">
+        <i
+          v-if="(onlyOneChild.meta.icon || (item.meta && item.meta.icon)).includes('el-icon')"
+          :class="onlyOneChild.meta.icon || (item.meta && item.meta.icon)"
+        ></i>
+        <svg-icon :iconHref="onlyOneChild.meta.icon || (item.meta && item.meta.icon)" class="sub-el-icon" v-else />
+        <template #title>{{ onlyOneChild.meta.title }} </template>
+      </el-menu-item>
     </template>
 
     <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
@@ -27,7 +30,7 @@
         class="nest-menu"
       />
     </el-submenu>
-  </div>
+  </template>
 </template>
 
 <script lang="ts">
@@ -97,3 +100,10 @@ export default defineComponent({
   },
 })
 </script>
+<style lang="scss" scoped>
+.sub-el-icon {
+  color: currentColor;
+  width: 1em;
+  height: 1em;
+}
+</style>

@@ -1,12 +1,9 @@
 <template>
   <svg
     :style="{
-      width: iconClass.width,
-      height: iconClass.height,
       display: 'inline-block',
-      marginRight: '12px',
-      marginLeft: '-2px',
     }"
+    :class="iconClass"
     aria-hidden="true"
   >
     <use :xlink:href="'#' + iconHref" />
