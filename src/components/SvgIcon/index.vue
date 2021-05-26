@@ -2,6 +2,8 @@
   <svg
     :style="{
       display: 'inline-block',
+      width: '1em',
+      height: '1em',
     }"
     :class="iconClass"
     aria-hidden="true"
@@ -15,11 +17,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   props: {
     iconClass: {
-      type: Object,
-      default: {
-        width: '18px',
-        height: '18px',
-      },
+      type: String,
       required: false,
     },
     iconHref: {
